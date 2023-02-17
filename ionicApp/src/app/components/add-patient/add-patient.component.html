@@ -1,0 +1,94 @@
+
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-title class="ion-text-center"> 
+      Add patient
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()" color="white">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+  
+  <div class="form-user">
+
+  
+    <ion-grid>    
+      
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="nopadding item item--civ" >
+            <ion-label>
+              Civilité
+            </ion-label>              
+            <ion-select  [value]=""  interface="popover">                    
+              <ion-select-option value="Mister">dr.</ion-select-option>
+              <ion-select-option value="Misses">pr.</ion-select-option>               
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="nopadding item">
+            <!-- <ion-label class="font-VF" position="fixed">Nom</ion-label> -->
+            <ion-input placeholder="nom de famille" [(ngModel)]="patient.firstName"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item class="nopadding item">
+            <ion-input placeholder="Prénom" [(ngModel)]="patient.lastName"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col size="6">
+          <ion-item class="nopadding item">
+            <ion-input type="email" placeholder="Email" [(ngModel)]="patient.email"></ion-input>
+          </ion-item>
+        </ion-col>
+  
+        <ion-col size="6">
+          <ion-item class="nopadding item">
+            <ion-input type="email" placeholder="phoneNumber" [(ngModel)]="patient.phoneNumber"></ion-input>
+          </ion-item>
+        </ion-col>
+  
+  
+ 
+  
+      
+  
+      </ion-row>
+  
+    
+  
+
+  
+  
+  
+  
+
+    
+
+     
+    
+    </ion-grid>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+  </ion-content>
