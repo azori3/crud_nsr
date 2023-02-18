@@ -1,0 +1,288 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+
+.ngx-datatable.bootstrap {  
+    background-color: transparent;  
+    box-shadow: 0 0 0 #000;  
+  }  
+    
+  .ngx-datatable.scroll-vertical {  
+    height: 300px;  
+  }  
+    
+  .no-detail-row .datatable-row-detail {  
+    display: none !important;  
+  }  
+    
+  .ngx-datatable.bootstrap.single-selection .datatable-body-row.active,  
+  .ngx-datatable.bootstrap.single-selection .datatable-body-row.active .datatable-row-group,  
+  .ngx-datatable.bootstrap.multi-selection .datatable-body-row.active,  
+  .ngx-datatable.bootstrap.multi-selection .datatable-body-row.active .datatable-row-group,  
+  .ngx-datatable.bootstrap.multi-click-selection .datatable-body-row.active,  
+  .ngx-datatable.bootstrap.multi-click-selection .datatable-body-row.active .datatable-row-group,  
+  .ngx-datatable.bootstrap.single-selection .datatable-body-row.active:hover,  
+  .ngx-datatable.bootstrap.single-selection .datatable-body-row.active:hover .datatable-row-group,  
+  .ngx-datatable.bootstrap.multi-selection .datatable-body-row.active:hover,  
+  .ngx-datatable.bootstrap.multi-selection .datatable-body-row.active:hover .datatable-row-group,  
+  .ngx-datatable.bootstrap.multi-click-selection .datatable-body-row.active:hover,  
+  .ngx-datatable.bootstrap.multi-click-selection .datatable-body-row.active:hover .datatable-row-group {  
+    background-color: blue !important;  
+  }  
+    
+  .datatable-body-cell {  
+    color: var(--ion-color-primary-table);  
+  }  
+    
+  .datatable-icon-right {  
+    text-decoration: none !important;  
+  }  
+    
+  .ngx-datatable.bootstrap .empty-row {  
+    text-align: center;  
+    margin-top: 20px;  
+  }  
+  .active-item{
+    --background: white;
+    --color: var(--ion-color-primary-table);;
+  } 
+  .nopadding{
+    --padding-start: 0!important;
+    --padding-end: 0px;
+    --inner-padding-end: 0px;
+    padding: 0;
+  } 
+  .ngx-datatable.bootstrap .datatable-footer {  
+    background-color: transparent; 
+    margin-top: 30px;
+    padding: 10px;
+    font-family: 'source-sans-pro';    
+  }  
+    
+  .ngx-datatable.bootstrap .datatable-footer .datatable-pager a {  
+    color: var(--ion-color-primary-table);
+    font-size: 17px;
+    padding: 5px 13px;
+    text-decoration: none;
+    margin: 0px !important;
+    border-right: 1px solid var(--ion-color-primary-table);
+  }  
+  
+  
+  .pager li>a,  
+  .pager li>span {  
+    border-color: black;
+    border-top: 1px solid var(--ion-color-primary-table);
+    border-bottom: 1px solid var(--ion-color-primary-table);
+  }  
+  
+  .pager li:nth-child(1){
+        border-left: 1px solid var(--ion-color-primary-table); 
+  }
+
+    
+  .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled).active a,  
+  .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {  
+    background-color: var(--ion-color-primary-table);  
+    border-color: var(--ion-color-primary-table);  
+    color: rgba(249, 250, 251, 0.777); 
+    text-decoration: none;
+  }  
+  
+  .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul{
+    margin: 0px;
+
+  }
+    
+  .ngx-datatable.bootstrap .datatable-body .datatable-body-row {  
+    border: 0;
+    border-right: 1px solid var(--ion-color-primary-table-table);
+    
+  }  
+    
+/*   .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row-even {  
+    background-color: rgba(0, 0, 0, 0.025);  
+  }   */
+    
+  .ngx-datatable.bootstrap .datatable-body .progress-linear {  
+    display: block;  
+    position: relative;  
+    width: 100%;  
+    height: 5px;  
+    padding: 0;  
+    margin: 0;  
+    position: absolute;  
+  }  
+    
+  .ngx-datatable.bootstrap .datatable-body .progress-linear .container {  
+    display: block;  
+    position: relative;  
+    overflow: hidden;  
+    width: 100%;  
+    height: 5px;  
+    -webkit-transform: translate(0, 0) scale(1, 1);  
+    transform: translate(0, 0) scale(1, 1);  
+    background-color: #aad1f9;  
+  }  
+    
+  .ngx-datatable.bootstrap .datatable-body .progress-linear .container .bar {  
+    transition: all .2s linear;  
+    -webkit-animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);  
+    animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);  
+    transition: -webkit-transform .2s linear;  
+    transition: transform .2s linear;  
+    background-color: var(--ion-color-primary-table);  
+    position: absolute;  
+    left: 0;  
+    top: 0;  
+    bottom: 0;  
+    width: auto;  
+    height: 5px;  
+  }  
+    
+  .wrapper .aside-container .aside-inner,  
+  .wrapper .aside-container {  
+    width: 230px;  
+  }  
+
+  .searchbar-input.sc-ion-searchbar-md {
+    -webkit-padding-end: 20px;
+    padding-inline-end: 20px;
+  }
+
+  .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-family: 'source-sans-pro';
+    font-weight: bolder;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background-color: var(--ion-color-primary-table);
+    /* border: .5px solid #0f9aa1!important; */
+    color: #6b7280;
+    padding: 5px 0px;
+
+}
+  .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell:nth-child(1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'source-sans-pro';
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-align: left;
+    white-space: nowrap;
+    padding-left: 15px;
+    background-color: var(--ion-color-primary-table);
+    /* border: .5px solid #0f9aa1!important; */
+    color: #6b7280;
+
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell:nth-last-child(1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'source-sans-pro';
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-align: center !important;
+  white-space: nowrap;
+  padding-left: 15px;
+  background-color: var(--ion-color-primary-table);
+  /* border: .5px solid #0f9aa1!important; */
+  color: #6b7280;
+
+}
+
+
+
+
+.ngx-datatable .datatable-body-cell, .ngx-datatable .datatable-header-cell {
+    display: inline-block;
+    line-height: 1.625;
+    overflow-x: hidden;
+    vertical-align: top;
+    border-left: 1px solid var(--ion-color-primary-table)!important;
+    border-bottom: 1px solid var(--ion-color-primary-table)!important;
+    text-align: left !important;
+    color: #707070;
+}
+.ngx-datatable .datatable-body-cell:nth-child(1) {
+
+  padding-left: 15px;
+  text-align: left;
+  color:#707070;
+  align-items: center;
+}
+.ngx-datatable .datatable-body-cell:nth-child(2) {
+  display: flex;  
+  align-items: left;
+  padding-left: 15px;
+  text-align: center;
+  color: #0D989F;
+  text-transform: uppercase;
+}
+.spectable .datatable-body-cell:nth-child(2){
+  padding-left: 8px;
+  color: #707070!important;
+  text-transform: none!important;
+}
+.ngx-datatable .datatable-body-cell:nth-child(3) {
+  padding-left: 8px;
+  text-align: left;
+  font-weight: 900;
+  color:#B25073;
+  text-transform: uppercase;
+}
+.ngx-datatable .datatable-body-cell:nth-child(4) {
+  padding-left: 8px;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+}
+.ngx-datatable .datatable-body-cell:nth-child(5) {
+  padding-left: 8px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.ngx-datatable .datatable-body-cell:nth-last-child(1) {
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid  var(--ion-color-primary-table)!important; 
+}
+
+
+
+.ngx-datatable .datatable-footer .datatable-pager .pager, .ngx-datatable .datatable-footer .datatable-pager .pager li {
+    display: inline-block;
+    list-style: none;
+    /* margin: 6px !important; */
+    padding: 0;
+}

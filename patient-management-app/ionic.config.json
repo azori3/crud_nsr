@@ -1,0 +1,7 @@
+{
+  "name": "patient-management-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
