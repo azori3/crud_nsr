@@ -9,6 +9,7 @@ import { PatientListPageRoutingModule } from './patient-list-routing.module';
 import { PatientListPage } from './patient-list.page';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { PatientFormComponent } from '../components/patient-form/patient-form.component';
+import { UpdatePatientComponent } from '../components/update-patient/update-patient.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { PatientFormComponent } from '../components/patient-form/patient-form.co
     IonicModule,
     PatientListPageRoutingModule
   ],
-  declarations: [PatientListPage,PatientFormComponent],
-  entryComponents:[PatientFormComponent]
+  declarations: [PatientListPage,PatientFormComponent,UpdatePatientComponent],
+  entryComponents:[PatientFormComponent,UpdatePatientComponent]
 })
 export class PatientListPageModule {}

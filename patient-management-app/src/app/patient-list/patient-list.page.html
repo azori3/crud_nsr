@@ -36,12 +36,12 @@
       <ngx-datatable-column   [sortable]="true"  name="lastName" prop="lastName"></ngx-datatable-column>  
       <ngx-datatable-column  [sortable]="true"  name="email" prop="email"></ngx-datatable-column>
       <ngx-datatable-column  [sortable]="true"  name="phoneNumber" prop="phoneNumber"></ngx-datatable-column>
-      <ngx-datatable-column  [sortable]="true"  name="dateOfBirth" prop="dateOfBirth"></ngx-datatable-column>
+      <ngx-datatable-column  [sortable]="true"  name="dateOfBirth" prop="dateBirth"></ngx-datatable-column>
 
       <ngx-datatable-column [width]="150" name="Actions" [sortable]="false">
         <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-        <ion-icon class="icon-row" name="create" ></ion-icon>
-        <ion-icon class="icon-row" name="trash-outline" ></ion-icon>
+        <ion-icon class="icon-row" name="create" (click)="updatePatient(row)" ></ion-icon>
+        <ion-icon class="icon-row" name="trash-outline" (click)="deletePatient(row)" ></ion-icon>
         </ng-template>     
       </ngx-datatable-column>
     </ngx-datatable>  

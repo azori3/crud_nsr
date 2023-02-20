@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { PatientFormComponent } from '../components/patient-form/patient-form.component';
+import { UpdatePatientComponent } from '../components/update-patient/update-patient.component';
 import { PatientService } from '../services/patient.service';
 
 @Component({
@@ -24,9 +26,34 @@ export class PatientListPage implements OnInit {
   constructor(private modalController:ModalController,private alertController:AlertController,private patientService:PatientService) { }
 
   ngOnInit() {
+
+    this.getListPatient();
     this.dataParams.page_num = 1;
     this.dataParams.page_size= 9;
   }
+
+  async updatePatient(row: any){
+  
+    const modal = await this.modalController.create({
+      component: UpdatePatientComponent,
+      cssClass: 'modalsize--rubrique',
+      componentProps: { 
+       data:row
+      }
+
+     
+    });
+    
+    modal.onDidDismiss().then((data) => {
+      this.getListPatient();
+
+
+    });
+    return await modal.present();
+
+  }
+
+
 
 
   async addPatient(){
@@ -38,8 +65,7 @@ export class PatientListPage implements OnInit {
     });
     
     modal.onDidDismiss().then((data) => {
-      
-      //update List
+      this.getListPatient();
 
 
     });
@@ -47,29 +73,55 @@ export class PatientListPage implements OnInit {
 
   }
 
+  getListPatient()
+  {
+    this.patientService.getAllPatients().subscribe(patients => {
 
-  deletePatient()
+     patients.forEach(patient => {
+
+      patient.dateBirth = formatDate(new Date(patient.dateBirth), 'yyyy-MM-dd','fr')
+  
+    });  
+
+      this.rows = patients;
+
+      
+      
+    })
+  }
+
+
+ async deletePatient(row:any)
   {
 
-    this.alertController.create({
-      subHeader: 'Are you sure to delete this Patient ?',
+    const alert = await this.alertController.create({
+      header: 'Are you sure to delete this Patient ?',
       buttons: [
         {
           text: 'non',
-          handler: (data: any) => {
-            this.alertController.dismiss();
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => { 
           }
-        },
-        {
-          text: 'oui!',
-          handler: (data: any) => {
-            
-            this.alertController.dismiss();
+        }, {
+          text: 'Ok',
+          cssClass: 'secondary',
+          handler: () => {
+            this.deletePatientAction(row.id);
+            alert.dismiss();
           }
         }
       ]
-    })
+    });
+    await alert.present();
 
+  }
+
+  deletePatientAction(id:string)
+  {
+    this.patientService.deletePatient(id).subscribe(res => {
+      this.getListPatient();
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{mode}} Patient</ion-title>
+    <ion-title> Patient</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -32,14 +32,16 @@
 
             <ion-item>
               <ion-label position="floating">Date of Birth*</ion-label>
-              <ion-input type="date" formControlName="dateBirth"></ion-input>
+              <ion-input type="date"  formControlName="dateBirth"></ion-input>
+
+              
             </ion-item>
 
           </ion-list>
 
           <div class="form-buttons">
             <ion-button type="submit" [disabled]="patientForm.invalid">
-              {{mode === 'Add' ? 'Add Patient' : 'Update Patient'}}
+              Update Patient
             </ion-button>
             <ion-button (click)="goBack()">Cancel</ion-button>
           </div>

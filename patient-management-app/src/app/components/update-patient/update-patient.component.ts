@@ -1,26 +1,50 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Patient } from 'src/app/Model/patient';
 import { PatientService } from 'src/app/services/patient.service';
+import { format, parseISO } from 'date-fns';
 
 @Component({
-  selector: 'app-patient-form',
-  templateUrl: './patient-form.component.html',
-  styleUrls: ['./patient-form.component.scss'],
+  selector: 'app-update-patient',
+  templateUrl: './update-patient.component.html',
+  styleUrls: ['./update-patient.component.scss'],
 })
-export class PatientFormComponent implements OnInit {
+export class UpdatePatientComponent implements OnInit {
 
-  patientForm:any;
+  patientForm!: FormGroup;
+  mode:string = 'Add';
+  data:any;
 
-  mode:string = 'Add'
+  showPicker: boolean = false;
 
   constructor(private patientService:PatientService,private modalController:ModalController) { }
 
   ngOnInit() {
+    this.initForm();
+    console.log(this.data);
+   
+     this.patientForm.patchValue({
+      id: this.data.id,
+      firstName: this.data.firstName,
+      lastName: this.data.lastName,
+      email: this.data.email,
+      phoneNumber: this.data.phoneNumber,
+      dateBirth: this.data.dateBirth
+    }); 
+
+   
+    
+  }
+
+
+
+
+
+  initForm()
+  {
     this.patientForm = new FormGroup({
-      id: new FormControl('12'),
+      id: new FormControl(''),
       firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', Validators.email),
@@ -41,10 +65,9 @@ export class PatientFormComponent implements OnInit {
   onSubmit() {
     if (this.patientForm.valid) {
 
-      console.log(this.patientForm.value.firstName);
 
       const patient: Patient = ({
-        id : "" ,
+        id : this.patientForm.value.id ,
         firstName: this.patientForm.value.firstName ,
         lastName: this.patientForm.value.lastName ,
         email: this.patientForm.value.email ,
@@ -53,9 +76,8 @@ export class PatientFormComponent implements OnInit {
       })
 
       
-    this.patientService.addPatient(patient).subscribe(res => {
+    this.patientService.updatePatient(patient).subscribe(res => {
       console.log(res);
-      this.modalController.dismiss();
       
      },error => {
       console.log(error);
@@ -65,3 +87,4 @@ export class PatientFormComponent implements OnInit {
   } 
 
 }
+
