@@ -9,13 +9,13 @@ This is a patient management app that allows medical professionals to manage pat
 
 #### Requirements
 
-•  The API  have a GET endpoint to load all the patients.
+The API  have a GET endpoint to load all the patients.
 
-•  The API  have a GET endpoint to load one patient with their Id.
+The API  have a GET endpoint to load one patient with their Id.
 
-•  The API should have a POST endpoint to create a patient.
+The API should have a POST endpoint to create a patient.
 
-•  The API should have a DELETE endpoint to delete a patient.
+The API should have a DELETE endpoint to delete a patient.
 
 ### Tech Stack
 
