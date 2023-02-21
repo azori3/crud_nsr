@@ -44,9 +44,11 @@ The API should have a DELETE endpoint to delete a patient.
 
 
 ### Model
-- you can find the class diagram  cd crud_nsr/cancer-Modal.pdf
+- cd crud_nsr
+- you can find the class diagram  cancer-Modal.pdf
 ---
 
 ### Additional Questions
-- you can find my reflection  cd crud_nsr/answers.pdf 
+- cd crud_nsr
+- you can find my answers  answers.pdf 
 
