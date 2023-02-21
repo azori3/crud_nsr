@@ -51,7 +51,7 @@ namespace api_patient_management.Repositories
 
 
 
-        public  void Update(T entity)
+        public virtual void Update(T entity)
         {
              _dbSet.Update(entity);
 

@@ -1,8 +1,9 @@
 import { formatDate } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ModalController, AlertController, LoadingController } from '@ionic/angular';
+import { ModalController, AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { Subscription } from 'rxjs';
+import { catchError, Subscription, throwError } from 'rxjs';
 import { PatientFormComponent } from '../components/patient-form/patient-form.component';
 import { UpdatePatientComponent } from '../components/update-patient/update-patient.component';
 import { PatientService } from '../services/patient.service';
@@ -27,7 +28,9 @@ export class PatientListPage implements OnInit, OnDestroy {
 
   constructor(private modalController: ModalController,
     private loadingController: LoadingController,
-    private alertController: AlertController, private patientService: PatientService) { }
+    private toastController:ToastController,
+    private alertController: AlertController,
+    private patientService: PatientService) { }
 
   
 
@@ -53,8 +56,6 @@ export class PatientListPage implements OnInit, OnDestroy {
       componentProps: {
         data: row
       }
-
-
     });
 
     modal.onDidDismiss().then(() => {
@@ -85,7 +86,16 @@ export class PatientListPage implements OnInit, OnDestroy {
   async getListPatient() {
 
    
-    this.patientSubscription = this.patientService.getAllPatients().subscribe(patients => {
+    this.patientSubscription = this.patientService.getAllPatients().pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.log(error);
+        if (error) {
+          this.presentToast('Please try again later, server error occurred','danger')
+        }
+       
+        return throwError(error);
+      })
+    ).subscribe(patients => {
 
       patients.forEach(patient => {
 
@@ -96,7 +106,7 @@ export class PatientListPage implements OnInit, OnDestroy {
       this.rows = patients;
      
 
-    })
+    });
   }
 
 
@@ -128,6 +138,15 @@ export class PatientListPage implements OnInit, OnDestroy {
   deletePatientAction(id: string) {
     this.patientService.deletePatient(id).subscribe(res => {
     });
+  }
+
+  async presentToast(text: string, color: string) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 3000,
+      color: color
+    });
+    toast.present();
   }
 
 }

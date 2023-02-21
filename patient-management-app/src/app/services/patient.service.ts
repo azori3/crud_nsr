@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Patient } from '../Model/patient';
@@ -14,7 +14,7 @@ export class PatientService {
 
   getAllPatients() {
 
-    return this.http.get<Patient[]>(environment.Api_Url+"api/Patients");
+    return this.http.get<Patient[]>(environment.Api_Url+"api/Patients")
   }
 
   getPatientById(id: number) {

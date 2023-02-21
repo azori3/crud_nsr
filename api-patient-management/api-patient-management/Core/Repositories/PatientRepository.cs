@@ -30,7 +30,15 @@ namespace api_patient_management.Repositories
         }
 
 
-     
+        public override void Update(Patient patient)
+        {
+            _dbSet.Update(patient);
+            //send mail function The data it was updated
+
+        }
+
+
+
 
 
     }
