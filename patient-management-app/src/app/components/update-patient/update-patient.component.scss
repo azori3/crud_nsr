@@ -1,0 +1,26 @@
+
+.new-background-color{
+    --background: var(--ion-color-primary);
+    color: white;
+  }
+
+ion-list{
+    padding-left: 45px;
+    padding-right: 45px; 
+    padding-top: 25px;  
+    width: 90%;
+    margin: 0 auto  ;
+    opacity: 1 !important;  
+}
+
+
+.form-buttons{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left:15%;
+    padding-top: 10%;
+    ion-button{
+      max-width:150px;
+    }
+}

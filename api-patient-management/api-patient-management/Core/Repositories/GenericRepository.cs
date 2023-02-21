@@ -43,19 +43,17 @@ namespace api_patient_management.Repositories
             return await _dbSet.FindAsync(id);
         }
 
-        public bool Delete(T entity)
+        public void Delete(T entity)
         {
             _dbSet.Remove(entity);
-            return true;
         }
 
 
 
 
-        public bool Update(T entity)
+        public  void Update(T entity)
         {
-            _dbSet.Update(entity);
-            return true;
+             _dbSet.Update(entity);
 
         }
 
@@ -63,6 +61,8 @@ namespace api_patient_management.Repositories
         {
             return await _dbSet.FindAsync(id);
         }
+
+       
     }
 }
 

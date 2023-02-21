@@ -56,7 +56,7 @@
   }  
     
   .datatable-body-cell {  
-    color: var(--ion-color-primary-table);  
+    color: var(--ion-priùar);  
   }  
     
   .datatable-icon-right {  
@@ -81,7 +81,6 @@
     background-color: transparent; 
     margin-top: 30px;
     padding: 10px;
-    font-family: 'source-sans-pro';    
   }  
     
   .ngx-datatable.bootstrap .datatable-footer .datatable-pager a {  
@@ -179,7 +178,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
-    font-family: 'source-sans-pro';
     font-weight: bolder;
     text-transform: uppercase;
     white-space: nowrap;
@@ -192,7 +190,6 @@
   .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell:nth-child(1) {
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: 'source-sans-pro';
     font-weight: bolder;
     text-transform: uppercase;
     text-align: left;
@@ -206,7 +203,6 @@
 .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell:nth-last-child(1) {
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: 'source-sans-pro';
   font-weight: bolder;
   text-transform: uppercase;
   text-align: center !important;

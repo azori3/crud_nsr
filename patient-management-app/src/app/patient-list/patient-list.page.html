@@ -40,8 +40,8 @@
 
       <ngx-datatable-column [width]="150" name="Actions" [sortable]="false">
         <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-        <ion-icon class="icon-row" name="create" (click)="updatePatient(row)" ></ion-icon>
-        <ion-icon class="icon-row" name="trash-outline" (click)="deletePatient(row)" ></ion-icon>
+        <ion-icon class="icon-row" color="primary" name="create" (click)="updatePatient(row)" ></ion-icon>
+        <ion-icon class="icon-row" color="danger" name="trash-outline" (click)="deletePatient(row)" ></ion-icon>
         </ng-template>     
       </ngx-datatable-column>
     </ngx-datatable>  

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+
 namespace api_patient_management.Repositories
 {
 	public interface IGenericRepository<T> where T : class
@@ -7,8 +9,8 @@ namespace api_patient_management.Repositories
         Task<T?> Get(Guid id);
         Task<IEnumerable<T>> GetAll();
         Task<T> Add(T entity);
-        bool Delete(T entity);
-        bool Update(T entity);
+        void Delete(T entity);
+        void Update(T entity);
 
     }
 }

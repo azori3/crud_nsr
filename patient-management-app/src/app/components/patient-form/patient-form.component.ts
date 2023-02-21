@@ -1,7 +1,8 @@
 
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Patient } from 'src/app/Model/patient';
 import { PatientService } from 'src/app/services/patient.service';
 
@@ -12,56 +13,87 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class PatientFormComponent implements OnInit {
 
-  patientForm:any;
+  patientForm: any;
+  todayDate:any = new Date();
 
-  mode:string = 'Add'
-
-  constructor(private patientService:PatientService,private modalController:ModalController) { }
+  constructor(private patientService: PatientService,
+    private toastController: ToastController,
+    private loadingController: LoadingController,
+    private modalController: ModalController) { }
 
   ngOnInit() {
+
+    this.todayDate = formatDate(this.todayDate, 'yyyy-MM-dd', 'fr');
     this.patientForm = new FormGroup({
       id: new FormControl('12'),
-      firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      firstName: new FormControl(''),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      email: new FormControl('', Validators.email),
+      email: new FormControl(''),
       phoneNumber: new FormControl(''),
       dateBirth: new FormControl('', Validators.required)
     });
   }
 
 
-  goBack()
-  {
+  goBack() {
     this.modalController.dismiss();
   }
 
 
 
 
-  onSubmit() {
+  async onSubmit() {
     if (this.patientForm.valid) {
+      const date = formatDate(this.patientForm.value.dateBirth, 'yyyy-MM-dd', 'fr');
+      if(date > this.todayDate)
+      {
+        this.presentToast("Please select a date before today","danger");
+      }
+      else{
+        const loading = await this.loadingController.create({})
+        await loading.present();
+        
+  
+        const patient: Patient = ({
+          id: "",
+          firstName: this.patientForm.value.firstName,
+          lastName: this.patientForm.value.lastName,
+          email: this.patientForm.value.email,
+          phoneNumber: this.patientForm.value.phoneNumber,
+          dateBirth: this.patientForm.value.dateBirth
+        })
+  
+  
+        this.patientService.addPatient(patient).subscribe(res => {
+          this.modalController.dismiss();
+          loading.dismiss();
+          this.presentToast('data updated successfully', 'primary')
+  
+        }, error => {
+          this.modalController.dismiss();
+          loading.dismiss();
+          this.presentToast(error.error.title, "danger");
+        })
+      }
 
-      console.log(this.patientForm.value.firstName);
 
-      const patient: Patient = ({
-        id : "" ,
-        firstName: this.patientForm.value.firstName ,
-        lastName: this.patientForm.value.lastName ,
-        email: this.patientForm.value.email ,
-        phoneNumber:this.patientForm.value.phoneNumber ,
-        dateBirth: this.patientForm.value.dateBirth
-      })
 
-      
-    this.patientService.addPatient(patient).subscribe(res => {
-      console.log(res);
-      this.modalController.dismiss();
-      
-     },error => {
-      console.log(error);
-      
-     }) 
+   
     }
-  } 
+  }
+
+  async presentToast(text: string, color: string) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 3000,
+      color: color
+    });
+    toast.present();
+  }
+
+  close(){
+    this.modalController.dismiss();
+  }
+
 
 }

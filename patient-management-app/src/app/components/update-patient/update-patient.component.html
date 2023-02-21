@@ -1,6 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title> Patient</ion-title>
+  <ion-toolbar class="new-background-color">
+    <ion-title class="ion-text-center"> 
+      update Patient   </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()" color="white">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,27 +17,27 @@
         <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
           <ion-list>
             <ion-item>
-              <ion-label position="floating">First Name*</ion-label>
+              <ion-label position="stacked">First Name*</ion-label>
               <ion-input type="text" formControlName="firstName"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-label position="floating">Last Name*</ion-label>
+              <ion-label position="stacked">Last Name*</ion-label>
               <ion-input type="text" formControlName="lastName"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-label position="floating">Email</ion-label>
+              <ion-label position="stacked">Email</ion-label>
               <ion-input type="email" formControlName="email"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-label position="floating">Phone Number</ion-label>
+              <ion-label position="stacked">Phone Number</ion-label>
               <ion-input type="tel" formControlName="phoneNumber"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-label position="floating">Date of Birth*</ion-label>
+              <ion-label position="stacked">Date of Birth*</ion-label>
               <ion-input type="date"  formControlName="dateBirth"></ion-input>
 
               
@@ -40,10 +46,10 @@
           </ion-list>
 
           <div class="form-buttons">
-            <ion-button type="submit" [disabled]="patientForm.invalid">
+            <ion-button color="primary" type="submit" [disabled]="patientForm.invalid">
               Update Patient
             </ion-button>
-            <ion-button (click)="goBack()">Cancel</ion-button>
+            <ion-button color="danger" (click)="goBack()">Cancel</ion-button>
           </div>
 
         </form>
