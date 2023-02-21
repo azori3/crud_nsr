@@ -27,14 +27,14 @@ The API should have a DELETE endpoint to delete a patient.
 - .NET Core 6
 
 
-### Run & Build Back-End api-patient-management
+### Run api-patient-management
 - Clone the repository to your local machine
 - cd crud_nsr/api-patient-management
 - Dotnet run
 
 ---
 
-### Run & Build Front patient-management-app
+### Run patient-management-app
 - cd crud_nsr/patient-management-app
 - npm install
 - ionic serve --port 8100
@@ -44,9 +44,9 @@ The API should have a DELETE endpoint to delete a patient.
 
 
 ### Model
-- you can find the class diagram in cancer-Modal.pdf
+- you can find the class diagram  cd crud_nsr/cancer-Modal.pdf
 ---
 
 ### Additional Questions
-- you can find my reflection in answers.pdf 
+- you can find my reflection  cd crud_nsr/answers.pdf 
 
