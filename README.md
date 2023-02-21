@@ -43,5 +43,10 @@ This is a patient management app that allows medical professionals to manage pat
 
 
 
-### Swagger UI will be run on this url
-`http://localhost:${PORT}/swagger-ui.html`
+### Model
+- you can find the class diagram in cancer-Modal.pdf
+
+
+### Additional Questions
+- you can find my answers in answers.pdf 
+
